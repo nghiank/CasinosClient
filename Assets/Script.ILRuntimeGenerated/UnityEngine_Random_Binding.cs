@@ -72,8 +72,8 @@ namespace ILRuntime.Runtime.Generated
 
 
 
-            app.RegisterCLRCreateDefaultInstance(type, () => new UnityEngine.Random());
-            app.RegisterCLRCreateArrayInstance(type, s => new UnityEngine.Random[s]);
+            app.RegisterCLRCreateDefaultInstance(type, () => new System.Random());
+            app.RegisterCLRCreateArrayInstance(type, s => new System.Random[s]);
 
             args = new Type[]{};
             method = type.GetConstructor(flag, null, args, null);
@@ -359,7 +359,7 @@ namespace ILRuntime.Runtime.Generated
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* __ret = ILIntepreter.Minus(__esp, 0);
 
-            var result_of_this_method = new UnityEngine.Random();
+            var result_of_this_method = new System.Random();
 
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }

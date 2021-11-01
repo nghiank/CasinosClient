@@ -134,7 +134,7 @@ namespace Casinos
         private void OnApplicationFocus(bool focus_status)
         {
             if (AppDomain != null)
-            {
+            { 
                 AppDomain.Invoke("Cs.Main", "OnApplicationFocus", null, new object[] { focus_status });
             }
         }
@@ -145,22 +145,25 @@ namespace Casinos
 #if UNITY_IPHONE || UNITY_IOS
             string s = "file:///" + Application.streamingAssetsPath;
 #else
-            string s = Application.streamingAssetsPath;
+            string s = "file:///" +  Application.streamingAssetsPath;
 #endif
-
+            Debug.Log("Streaming assets paths:" + s);          
             using (UnityWebRequest www_request = UnityWebRequest.Get(s + "/LaunchInfo.txt"))
             {
                 yield return www_request.SendWebRequest();
 
                 LaunchInfo = LitJson.JsonMapper.ToObject<LaunchInfo>(www_request.downloadHandler.text);
+                Debug.Log(LaunchInfo);
             }
 
             Dictionary<string, UnityWebRequest> map_www = new Dictionary<string, UnityWebRequest>();
             foreach (var i in LaunchInfo.LaunchFileList)
             {
+                Debug.Log("WebRequest: " + s + "/" + i);
                 UnityWebRequest www_request = UnityWebRequest.Get(s + "/" + i);
                 www_request.SendWebRequest();
                 map_www[i] = www_request;
+                
             }
 
             List<string> list_key = new List<string>();
@@ -199,7 +202,9 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _launch()
         {
+         
             string path_dll = Application.persistentDataPath + "/Launch/Cs/";
+            Debug.Log("path_dll:" + path_dll);
 
 #if UNITY_EDITOR
             // 检测Script.CSharp.dll是否存在，如不存在则给出提示

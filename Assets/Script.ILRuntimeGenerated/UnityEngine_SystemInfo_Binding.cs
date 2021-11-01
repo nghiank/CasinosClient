@@ -954,7 +954,7 @@ namespace ILRuntime.Runtime.Generated
             StackObject* __ret = ILIntepreter.Minus(__esp, 0);
 
 
-            var result_of_this_method = UnityEngine.SystemInfo.supportsGPUFence;
+            var result_of_this_method = UnityEngine.SystemInfo.supportsGraphicsFence;
 
             __ret->ObjectType = ObjectTypes.Integer;
             __ret->Value = result_of_this_method ? 1 : 0;

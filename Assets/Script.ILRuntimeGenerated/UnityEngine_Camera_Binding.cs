@@ -2643,7 +2643,7 @@ namespace ILRuntime.Runtime.Generated
             System.Single @focalLength = *(float*)&ptr_of_this_method->Value;
 
 
-            var result_of_this_method = UnityEngine.Camera.FocalLengthToFOV(@focalLength, @sensorSize);
+            var result_of_this_method = UnityEngine.Camera.FocalLengthToFieldOfView(@focalLength, @sensorSize);
 
             __ret->ObjectType = ObjectTypes.Float;
             *(float*)&__ret->Value = result_of_this_method;
@@ -2663,7 +2663,7 @@ namespace ILRuntime.Runtime.Generated
             System.Single @fov = *(float*)&ptr_of_this_method->Value;
 
 
-            var result_of_this_method = UnityEngine.Camera.FOVToFocalLength(@fov, @sensorSize);
+            var result_of_this_method = UnityEngine.Camera.FieldOfViewToFocalLength(@fov, @sensorSize);
 
             __ret->ObjectType = ObjectTypes.Float;
             *(float*)&__ret->Value = result_of_this_method;
